@@ -2,8 +2,14 @@ using Microsoft.EntityFrameworkCore;
 
 public class QuizContext : DbContext
 {
-    public QuizContext()
+    public QuizContext(DbContextOptions<QuizContext> options) : base(options)
     {
+        Database.EnsureCreated();
+    }
+
+    public void RecreateDatabase()
+    {
+        Database.EnsureDeleted();
         Database.EnsureCreated();
     }
 

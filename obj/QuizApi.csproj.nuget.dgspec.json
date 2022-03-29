@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Code\\WEB\\QuizApi\\QuizApi.csproj": {}
+    "D:\\Code\\WEB\\QuizApi\\QuizApi.csproj": {}
   },
   "projects": {
-    "d:\\Code\\WEB\\QuizApi\\QuizApi.csproj": {
+    "D:\\Code\\WEB\\QuizApi\\QuizApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Code\\WEB\\QuizApi\\QuizApi.csproj",
+        "projectUniqueName": "D:\\Code\\WEB\\QuizApi\\QuizApi.csproj",
         "projectName": "QuizApi",
-        "projectPath": "d:\\Code\\WEB\\QuizApi\\QuizApi.csproj",
+        "projectPath": "D:\\Code\\WEB\\QuizApi\\QuizApi.csproj",
         "packagesPath": "C:\\Users\\HappyFox404\\.nuget\\packages\\",
-        "outputPath": "d:\\Code\\WEB\\QuizApi\\obj\\",
+        "outputPath": "D:\\Code\\WEB\\QuizApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -25,6 +25,7 @@
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
