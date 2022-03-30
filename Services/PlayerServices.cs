@@ -1,21 +1,16 @@
-using System.Linq;
-
 namespace QuizApi.Services
 {
-    public class Player
+    public class PlayerServices
     {
         public static List<Player> Players { get; set; } = new();
-
-        public string Name { get; set; }
-        public long Id { get; set; }
-        public DateTime LastActive { get; set; }
-
         private static long s_generateId()
         {
             long total = Players.Sum(p => p.Id);
             long newId = Math.Abs(total - (Players.Count + 1 * (Players.Count / 2)));
             return newId;
         }
+
+        public static Player? GetPlayer(long id) => Players.FirstOrDefault(p => p.Id == id);
 
         public static long CreatePlayer(string name)
         {

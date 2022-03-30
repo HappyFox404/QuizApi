@@ -3,11 +3,11 @@ using QuizApi.Models;
 
 namespace QuizApi.Controllers
 {
-    public class Util : Controller
+    public class UtilController : Controller
     {
         QuizContext db;
 
-        public Util(QuizContext context)
+        public UtilController(QuizContext context)
         {
             db = context;
         }
