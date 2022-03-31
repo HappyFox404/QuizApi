@@ -3,16 +3,17 @@ namespace QuizApi.Services
     public class LobbyServices
     {
         public static List<Lobby> Lobbies { get; set; } = new();
+        public static int LastId = 0;
 
-        public static Lobby? GetLobby(long id) => Lobbies.FirstOrDefault(l => l.Id == id);
-        public static IEnumerable<Lobby> GetAll() => Lobbies;
-
-        private static long s_generateId()
+        public static void Init()
         {
-            long total = Lobbies.Sum(l => l.Id);
-            long newId = Math.Abs(total - (Lobbies.Count + 1 * (Lobbies.Count / 2)));
-            return newId;
+            CreateLobby("test lobby 1", PlayerServices.GetPlayer(0));
+            CreateLobby("test lobby 2", PlayerServices.GetPlayer(1));
+            CreateLobby("test lobby 3", PlayerServices.GetPlayer(2));
         }
+
+        public static Lobby? GetLobby(int id) => Lobbies.FirstOrDefault(l => l.Id == id);
+        public static IEnumerable<Lobby> GetAll() => Lobbies;
 
         public static IEnumerable<Lobby> GetLobbies(int count, int ofset = 0)
         {
@@ -21,12 +22,12 @@ namespace QuizApi.Services
             return Lobbies.Skip(ofset).Take(count);
         }
 
-        public static long CreateLobby(string name, Player owner)
+        public static int CreateLobby(string name, Player owner)
         {
             var lobby = new Lobby()
             {
                 Name = name,
-                Id = s_generateId(),
+                Id = LastId++,
                 LastActive = DateTime.Now,
                 IsStart = false,
                 OwnerLobby = owner,
@@ -36,7 +37,7 @@ namespace QuizApi.Services
             return lobby.Id;
         }
 
-        public static bool RenevalActive(long id)
+        public static bool RenevalActive(int id)
         {
             var lobby = Lobbies.FirstOrDefault(l => l.Id == id);
 
@@ -47,7 +48,7 @@ namespace QuizApi.Services
             return true;
         }
 
-        public static bool ChangeName(long id, string name)
+        public static bool ChangeName(int id, string name)
         {
             var lobby = Lobbies.FirstOrDefault(l => l.Id == id);
 
@@ -58,7 +59,7 @@ namespace QuizApi.Services
             return true;
         }
 
-        public static bool CloseLobby(long id)
+        public static bool CloseLobby(int id)
         {
             var lobby = Lobbies.FirstOrDefault(l => l.Id == id);
 
@@ -69,7 +70,7 @@ namespace QuizApi.Services
             return true;
         }
 
-        public static bool StartGame(long id)
+        public static bool StartGame(int id)
         {
             var lobby = Lobbies.FirstOrDefault(l => l.Id == id);
 

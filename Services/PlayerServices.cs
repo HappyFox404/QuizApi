@@ -3,28 +3,30 @@ namespace QuizApi.Services
     public class PlayerServices
     {
         public static List<Player> Players { get; set; } = new();
-        private static long s_generateId()
+        public static int LastId = 0;
+
+        public static void Init()
         {
-            long total = Players.Sum(p => p.Id);
-            long newId = Math.Abs(total - (Players.Count + 1 * (Players.Count / 2)));
-            return newId;
+            CreatePlayer("test 1");
+            CreatePlayer("test 2");
+            CreatePlayer("test 3");
         }
 
-        public static Player? GetPlayer(long id) => Players.FirstOrDefault(p => p.Id == id);
+        public static Player? GetPlayer(int id) => Players.FirstOrDefault(p => p.Id == id);
 
-        public static long CreatePlayer(string name)
+        public static int CreatePlayer(string name)
         {
             var player = new Player()
             {
                 Name = name,
-                Id = s_generateId(),
+                Id = LastId++,
                 LastActive = DateTime.Now
             };
             Players.Add(player);
             return player.Id;
         }
 
-        public static bool RenevalActive(long id)
+        public static bool RenevalActive(int id)
         {
             var player = Players.FirstOrDefault(p => p.Id == id);
 
@@ -35,7 +37,7 @@ namespace QuizApi.Services
             return true;
         }
 
-        public static bool ChangeName(long id, string name)
+        public static bool ChangeName(int id, string name)
         {
             var player = Players.FirstOrDefault(p => p.Id == id);
 
@@ -46,7 +48,7 @@ namespace QuizApi.Services
             return true;
         }
 
-        public static bool DeletePlayer(long id)
+        public static bool DeletePlayer(int id)
         {
             var player = Players.FirstOrDefault(p => p.Id == id);
 
