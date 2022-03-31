@@ -12,7 +12,7 @@ namespace QuizApi.Controllers
         public ActionResult<ApiResponse> GetAll() => ApiResponse.ResponseOk(LobbyServices.GetAll());
         [HttpGet("{id}")]
         public ActionResult<ApiResponse> Get(int id) => ApiResponse.ResponseOk(LobbyServices.GetLobby(id));
-        [HttpGet("{count}&{offset}")]
-        public ActionResult<ApiResponse> Get(int count, int offset = 0) => ApiResponse.ResponseOk(LobbyServices.GetLobbies(count, offset));
+        [HttpGet("Offset")]
+        public ActionResult<ApiResponse> GetOffset(int count, int offset = 0) => ApiResponse.ResponseOk(LobbyServices.GetLobbies(count, offset));
     }
 }

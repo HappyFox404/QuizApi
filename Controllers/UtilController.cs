@@ -3,7 +3,9 @@ using QuizApi.Models;
 
 namespace QuizApi.Controllers
 {
-    public class UtilController : Controller
+    [ApiController]
+    [Route("[controller]")]
+    public class UtilController : ControllerBase
     {
         QuizContext db;
 
@@ -12,10 +14,11 @@ namespace QuizApi.Controllers
             db = context;
         }
 
+        [HttpGet]
         [Route("/rcreate")]
-        public JsonResult RecreteDatabase()
+        public ActionResult<ApiResponse> RecreteDatabase()
         {
-            return Json(ApiResponse.ResponseOk());
+            return ApiResponse.ResponseOk();
         }
     }
 }
