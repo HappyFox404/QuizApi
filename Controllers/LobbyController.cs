@@ -2,12 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using QuizApi.Models;
 using QuizApi.Services;
 
-/*
-    TODO:
-    CodeReview Create
-    Add Method Append Player
-*/
-
 namespace QuizApi.Controllers
 {
     [ApiController]
@@ -21,9 +15,9 @@ namespace QuizApi.Controllers
         [HttpGet("Offset")]
         public ActionResult<ApiResponse> GetOffset(int count, int offset = 0) => ApiResponse.ResponseOk(LobbyServices.GetLobbies(count, offset));
         [HttpPost]
-        public ActionResult<ApiResponse> Create(int id, LobbyTransfer lobby)
+        public ActionResult<ApiResponse> Create(LobbyCreate lobby)
         {
-            int idLobby = LobbyServices.CreateLobby(lobby.Name, PlayerServices.GetPlayer(id));
+            int idLobby = LobbyServices.CreateLobby(lobby.Name, PlayerServices.GetPlayer(lobby.PlayerId));
             return ApiResponse.ResponseOk(idLobby);
         }
         [HttpPut("{id}")]

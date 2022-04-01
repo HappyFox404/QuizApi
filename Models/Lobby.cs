@@ -10,6 +10,12 @@ namespace QuizApi.Services
         public List<Player> PlayersInLobby { get; set; } = new();
     }
 
+    public class LobbyCreate
+    {
+        public int PlayerId { get; set; }
+        public string Name { get; set; }
+    }
+
     public class LobbyTransfer
     {
         public string Name { get; set; }
