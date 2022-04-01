@@ -17,7 +17,14 @@ namespace QuizApi.Models
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }
+
         [Required]
         public List<Answer> Answers { get; set; }
+    }
+
+    public class QuestionTransfer
+    {
+        public string Text { get; set; }
+        public int CategoryId { get; set; }
     }
 }

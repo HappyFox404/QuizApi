@@ -17,4 +17,10 @@ namespace QuizApi.Models
         public string QuestionId { get; set; }
         public Question Question { get; set; }
     }
+
+    public class AnswerTransfer
+    {
+        public string Text;
+        public string QuestionId;
+    }
 }
