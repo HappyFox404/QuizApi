@@ -18,7 +18,7 @@ namespace QuizApi.Controllers
         [Route("/rcreate")]
         public ActionResult<ApiResponse> RecreteDatabase()
         {
-            return ApiResponse.ResponseOk();
+            return ApiResponse.ResponseOk(db.RecreateDatabase());
         }
     }
 }

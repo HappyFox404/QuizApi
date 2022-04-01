@@ -12,4 +12,9 @@ namespace QuizApi.Models
 
         public List<Question> Questions { get; set; } = new();
     }
+
+    public class CategoryTransfer
+    {
+        public string Name { get; set; }
+    }
 }

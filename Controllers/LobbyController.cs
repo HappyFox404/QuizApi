@@ -10,16 +10,20 @@ namespace QuizApi.Controllers
     {
         [HttpGet]
         public ActionResult<ApiResponse> GetAll() => ApiResponse.ResponseOk(LobbyServices.GetAll());
+
         [HttpGet("{id}")]
         public ActionResult<ApiResponse> Get(int id) => ApiResponse.ResponseOk(LobbyServices.GetLobby(id));
+
         [HttpGet("Offset")]
         public ActionResult<ApiResponse> GetOffset(int count, int offset = 0) => ApiResponse.ResponseOk(LobbyServices.GetLobbies(count, offset));
+
         [HttpPost]
         public ActionResult<ApiResponse> Create(LobbyCreate lobby)
         {
             int idLobby = LobbyServices.CreateLobby(lobby.Name, PlayerServices.GetPlayer(lobby.PlayerId));
             return ApiResponse.ResponseOk(idLobby);
         }
+
         [HttpPut("{id}")]
         public ActionResult<ApiResponse> Edit(int id, LobbyTransfer lobby)
         {
@@ -27,6 +31,7 @@ namespace QuizApi.Controllers
                 return ApiResponse.ResponseOk();
             return ApiResponse.ResponseServerError("Lobby Not Found");
         }
+
         [HttpDelete("{id}")]
         public ActionResult<ApiResponse> Delete(int id)
         {
@@ -34,6 +39,7 @@ namespace QuizApi.Controllers
                 return ApiResponse.ResponseOk();
             return ApiResponse.ResponseServerError("Lobby Not Found");
         }
+
         [HttpGet("Reneval/{id}")]
         public ActionResult<ApiResponse> Reneval(int id)
         {
@@ -41,6 +47,7 @@ namespace QuizApi.Controllers
                 return ApiResponse.ResponseOk();
             return ApiResponse.ResponseServerError("Lobby Not Found");
         }
+
         [HttpGet("Start/{id}")]
         public ActionResult<ApiResponse> Start(int id)
         {
